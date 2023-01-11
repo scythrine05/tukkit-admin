@@ -1,9 +1,17 @@
+:root {
+  --sub-theme: #0f3460;
+  --text: #000;
+  --border: #a3c7d6;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--theme);
+  overflow-x: hidden;
 }
 
 a {
@@ -15,12 +23,15 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.nav-pills .nav-link:not(.active) {
+  color: #000;
+}
+.nav-pills .nav-item .nav-link.active {
+  background-color: var(--text);
+}
+
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
