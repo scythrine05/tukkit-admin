@@ -14,7 +14,7 @@ import { db } from "../firebase";
 //Utils
 import { ReadData } from "../utils/CRUD";
 
-export const postContext = React.createContext();
+export const feedContext = React.createContext();
 
 const PostProvider = ({ children }) => {
   const [data, setData] = React.useState(null);
@@ -23,7 +23,7 @@ const PostProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(false);
 
   const defaultConfig = query(
-    collection(db, "posts"),
+    collection(db, "feedback"),
     orderBy("created", "desc"),
     limit(10)
   );
@@ -59,26 +59,10 @@ const PostProvider = ({ children }) => {
     }
   };
 
-  const deleteData = (Id) => {
-    const nData = data.filter((e) => e.Id !== Id);
-    setData(nData);
-  };
-
-  const addData = (tData) => {
-    setData([tData, ...data]);
-  };
-
-  const updateData = (tData) => {
-    const foundIndex = data.findIndex((x) => x.Id === tData.Id);
-    data[foundIndex] = tData;
-  };
-
   return (
-    <postContext.Provider
-      value={{ data, more, last, loading, deleteData, addData, updateData }}
-    >
+    <feedContext.Provider value={{ data, more, last, loading }}>
       {children}
-    </postContext.Provider>
+    </feedContext.Provider>
   );
 };
 

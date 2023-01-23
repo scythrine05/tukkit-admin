@@ -1,18 +1,20 @@
 import React from "react";
-import { ListGroup, Button } from "react-bootstrap";
 
 //Icons
-import { AiFillDelete } from "react-icons/ai";
+import { TRASH, STAR } from "../utils/Icons";
 
-import styles from "../styles/Home.module.css";
-
-export default function ListItem() {
+export default function ListItem({ item }) {
   return (
-    <ListGroup.Item className={styles.list_item}>
-      Cras justo odio
-      <Button className={styles.button_round} variant="danger">
-        <AiFillDelete />
-      </Button>
-    </ListGroup.Item>
+    <div>
+      <div className="p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="whitespace-wrap">
+          {item.message}
+          <div className="flex items-center my-2">
+            <p className="px-2 font-medium text-sm">{item.rating}</p>
+            <STAR />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,12 +1,12 @@
 import React from "react";
 
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 export const authContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
-  const auth = getAuth();
 
   React.useEffect(() => {
     const unlisten = auth.onAuthStateChanged((userData) => {

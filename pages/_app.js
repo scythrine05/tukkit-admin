@@ -1,19 +1,13 @@
 import "../styles/globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-//Firebase
-import initFirebase from "../config";
-
-//Contexts
-import AuthProvider from "../contexts/Auth";
-
-initFirebase(); //initiating Firebase
+//Layout
+import Layout from "../layout/Root";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthProvider>
+    <Layout>
       <Component {...pageProps} />
-    </AuthProvider>
+    </Layout>
   );
 }
 

@@ -1,11 +1,11 @@
 import React from "react";
 //Firebase
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 //Contexts
 import { authContext } from "../contexts/Auth";
 
-const auth = getAuth();
+import { auth } from "../firebase";
 
 export async function SignIn(email, password) {
   try {

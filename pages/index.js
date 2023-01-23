@@ -1,30 +1,24 @@
 import React from "react";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 //Containers
-import Tabs from "../containers/Tabs";
-import Login from "../containers/Login";
+import Cards from "../containers/Cards";
 
 //Components
-import Header from "../components/Header";
+import Button from "../components/Button";
 
-//Contexts
-import { authContext } from "../contexts/Auth";
+//Icons
+import { POSTADD } from "../utils/Icons";
 
-export default function Home() {
-  const { user } = React.useContext(authContext); //authUser State
-
+export default function Posts() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Admin Panel</title>
-        <meta name="description" content="Admin Panel for Tukkit news app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      <main className={styles.main}>{user ? <Tabs /> : <Login />}</main>
+    <div>
+      <div className="px-5">
+        <Link href="/editor">
+          <Button label={<POSTADD />} />
+        </Link>
+      </div>
+      <Cards />
     </div>
   );
 }

@@ -2,112 +2,31 @@ import React from "react";
 import Card from "../components/Card";
 import styles from "../styles/Home.module.css";
 
-//BootStrap
-import { Container, Row } from "react-bootstrap";
+//Components
+import Button from "../components/Button";
+import Spinner from "../components/Spinner";
 
-const data = [
-  {
-    title:
-      "Hello My name is Something you want to know, and that is the news. I just want to tell you the world is going to end.",
-    description:
-      "Hello My name is Something you want to know, and that is the news. I just want to tell you the world is going to end.Hello My name is Something you want to know, and that is the news. I just want to tell you the world is going to end.Hello My name is Something you want to know, and that is the news. I just want to tell you the world is going to end.",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-  {
-    title: "Hello",
-    description: "Hey there it is what it is",
-    display:
-      "https://images.indianexpress.com/2022/12/apple-japan-investment.jpg",
-    source: "Economic Times",
-    type: "post",
-    url: "https://hey.com",
-  },
-];
+//Contexts
+import { postContext } from "../contexts/Post";
 
 export default function Cards() {
+  const { data, last, more, loading, deleteData } =
+    React.useContext(postContext);
   return (
-    <Container>
-      <Row md={2}>
-        {data.map((item, index) => (
-          <Card item={item} key={index} />
-        ))}
-      </Row>
-    </Container>
+    <div className="w-full">
+      {data
+        ? data.map((item, index) => (
+            <Card item={item} key={index} deleteData={deleteData} />
+          ))
+        : "Loading"}
+      {!last ? (
+        <div className="flex justify-center items-center">
+          <Button
+            label={loading ? <Spinner label="Loading" /> : "More"}
+            onClick={more}
+          />
+        </div>
+      ) : null}
+    </div>
   );
 }
