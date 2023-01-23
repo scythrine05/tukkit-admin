@@ -1,9 +1,6 @@
 import React from "react";
 import Link from "next/link";
 
-//Components
-import Modal from "./Modal";
-
 //Icons
 import { TRASH, EDIT } from "../utils/Icons";
 

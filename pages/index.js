@@ -13,7 +13,7 @@ import { POSTADD } from "../utils/Icons";
 export default function Posts() {
   return (
     <div>
-      <div className="px-5">
+      <div className="px-5 fixed right-10 bottom-10">
         <Link href="/editor">
           <Button label={<POSTADD />} />
         </Link>
