@@ -3,6 +3,7 @@ import Card from "../components/Card";
 
 //Components
 import Button from "../components/Button";
+import Spinner from "../components/Spinner";
 import Loader from "../components/Loader";
 
 //Contexts

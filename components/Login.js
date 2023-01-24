@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 //Components
 import TextField from "../components/TextField";
@@ -38,9 +39,17 @@ export default function Login() {
   return (
     <div className="flex justify-center items-center p-20">
       <form
-        className="bg-[#d8d8d8] flex flex-col p-20 rounded"
+        className="bg-[#4a4a4a] flex flex-col p-20 rounded"
         onSubmit={handleSubmit}
       >
+        <div className="py-2 text-md flex justify-center">
+          <Image
+            src="/assets/logo/main.svg"
+            alt="Tukkit logo"
+            width={60}
+            height={60}
+          />
+        </div>
         {error ? <Danger msg={error} /> : null}
         <TextField
           id="email"
@@ -49,6 +58,7 @@ export default function Login() {
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+          light
         />
 
         <TextField
@@ -58,6 +68,7 @@ export default function Login() {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          light
         />
         <Button type="submit" label={!loading ? "Login" : <Spinner />} />
       </form>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -21,7 +22,14 @@ const Sidebar = ({ children }) => {
         className="bg-[#18191a] min-h-screen w-16 md:w-48
         duration-500 text-gray-100 px-4 fixed"
       >
-        <div className="py-3 text-md"></div>
+        <div className="py-10 text-md flex justify-center">
+          <Image
+            src="/assets/logo/main.svg"
+            alt="Tukkit logo"
+            width={40}
+            height={40}
+          />
+        </div>
         <div className="mt-4 flex flex-col gap-4 font-md relative">
           {menus?.map((menu, i) => (
             <Link

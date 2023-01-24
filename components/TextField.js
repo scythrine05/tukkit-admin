@@ -3,7 +3,12 @@ import React from "react";
 export default function TextField(props) {
   return (
     <div className="my-2">
-      <label htmlFor={props.id} className="block mb-2 text-base  text-gray-900">
+      <label
+        htmlFor={props.id}
+        className={`block mb-2 text-base ${
+          props.light ? "text-white" : "text-black"
+        }`}
+      >
         {props.label}
       </label>
       <input
